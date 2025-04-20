@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd "$(git rev-parse --show-toplevel)"
+if ! test -d src/server/pb_data; then
+    ./meta/setup.sh
+fi
 
-./meta/setup.sh
-source ./meta/pocketbase/config.sh
-export PATH="$PB_DIR:$PATH"
-
-cd src/server
-
+source ./meta/on_server.sh
 exec pocketbase --dev serve --http 127.0.0.1:8000
