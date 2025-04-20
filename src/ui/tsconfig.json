@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2015"],
+    "strict": true,
+    "jsx": "preserve",
+    "jsxFactory": "Preact.h",
+    "jsxFragmentFactory": "Preact.Fragment",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  }
+}
