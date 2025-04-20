@@ -24,5 +24,5 @@ FROM debian:stable-slim AS release
 WORKDIR /app
 COPY --from=pocketbase-downloader /wd/pocketbase pocketbase
 COPY --from=ui-builder /wd/src/ui/dist pb_public
-COPY src/server/pb_migrations src/server/pb_migrations
-CMD [ "./pocketbase", "--dir", "/data" , "serve", "--http", "0.0.0.0:80" ]
+COPY src/server/pb_migrations pb_migrations
+CMD [ "./pocketbase", "--dir", "/data", "--migrationsDir", "/app/pb_migrations", "serve", "--http", "0.0.0.0:80" ]
